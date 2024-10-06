@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend/Fullstack Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Frontend/Fullstack Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. Was ist der Unterschied zwischen `let`, `var` und `const` in JavaScript?</p>
+                <label><input type="radio" name="q1" value="A"> Sie sind identisch, nur mit verschiedenen Namen.</label><br>
+                <label><input type="radio" name="q1" value="B"> `let` und `const` haben Blockscope, `var` hat funktionsbezogenen Scope.</label><br>
+                <label><input type="radio" name="q1" value="C"> `var` und `let` sind konstant, `const` ist veränderbar.</label><br>
+                <label><input type="radio" name="q1" value="D"> `let` und `var` können nicht in Schleifen verwendet werden.</label><br>
+            </div>
+
+            <!-- Weitere Fragen... -->
+
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
