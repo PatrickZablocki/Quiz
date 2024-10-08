@@ -14,7 +14,9 @@ function submitQuiz() {
         q12: "B",
         q13: "A",
         q14: "B",
-        q15: "B"
+        q15: "B",
+        q16: "B",
+        q17: "B"
         // Weitere Fragen...
     };
 
