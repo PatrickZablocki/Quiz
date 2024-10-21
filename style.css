@@ -6,36 +6,58 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
 }
 
 .quiz-container {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
     width: 100%;
+    text-align: left;
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
 }
 
 .question {
     margin-bottom: 15px;
 }
 
+label {
+    display: block;
+    padding: 5px 0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+label:hover {
+    background-color: #f0f0f0;
+}
+
 button {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -46,4 +68,20 @@ button:hover {
     margin-top: 20px;
     font-size: 18px;
     text-align: center;
+    color: #333;
+}
+
+#timer {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+.quiz-container h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
 }
