@@ -1,3 +1,7 @@
+// Benutzername und Avatar speichern
+let userName = "";
+let userAvatar = "";
+
 // Zeitmessung: Startzeit speichern
 let startTime = new Date();
 
@@ -11,17 +15,17 @@ function updateTimer() {
         timerDiv.textContent = `Verstrichene Zeit: ${timeElapsed} Sekunden`;
     }
 }
+
+// Dark Mode Toggle
 const toggleButton = document.getElementById('theme-toggle');
 const body = document.body;
-
-// Prüfen, ob der Benutzer zuvor Dark Mode aktiviert hatte
 const savedTheme = localStorage.getItem('theme');
+
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
     toggleButton.textContent = 'Light Mode';
 }
 
-// Funktion zum Umschalten des Themas
 toggleButton.addEventListener('click', function() {
     if (body.classList.contains('dark-mode')) {
         body.classList.remove('dark-mode');
@@ -34,6 +38,21 @@ toggleButton.addEventListener('click', function() {
     }
 });
 
+// Quiz starten
+document.getElementById('start-quiz').addEventListener('click', function() {
+    const nameInput = document.getElementById('username').value;
+    const avatarInput = document.querySelector('input[name="avatar"]:checked').value;
+
+    if (nameInput.trim() === "") {
+        alert("Bitte gib deinen Namen ein!");
+    } else {
+        userName = nameInput;
+        userAvatar = avatarInput;
+
+        document.getElementById('user-info').style.display = 'none';
+        document.getElementById('quiz-box').style.display = 'block';
+    }
+});
 
 // Quiz-Abgabe-Funktion
 function submitQuiz() {
@@ -81,7 +100,6 @@ function submitQuiz() {
         }
     }
 
-    // Zeit stoppen und Anzeige
     clearInterval(timerInterval);
     const timeSpent = Math.floor((new Date() - startTime) / 1000);
     displayResult(score, totalQuestions, timeSpent);
@@ -95,7 +113,6 @@ function provideFeedback(questionName, isCorrect, correctAnswer) {
         const parentLabel = element.parentElement;
         parentLabel.style.transition = 'background-color 0.5s ease';
 
-        // Richtig oder falsch markieren
         if (isCorrect) {
             parentLabel.innerHTML += " ✔️";
             parentLabel.style.backgroundColor = 'lightgreen';
@@ -107,7 +124,6 @@ function provideFeedback(questionName, isCorrect, correctAnswer) {
         }
     });
 
-    // Wenn die Antwort falsch ist, zeigen wir die richtige Antwort an
     if (!isCorrect) {
         elements.forEach(element => {
             if (correctAnswer.includes(element.value)) {
@@ -121,7 +137,7 @@ function provideFeedback(questionName, isCorrect, correctAnswer) {
 
 function displayResult(score, totalQuestions, timeSpent) {
     const resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = `Du hast ${score} von ${totalQuestions} richtig in ${timeSpent} Sekunden!`;
+    resultDiv.innerHTML = `${userAvatar} ${userName}, du hast ${score} von ${totalQuestions} richtig in ${timeSpent} Sekunden!`;
     resultDiv.style.fontSize = '1.5em';
     resultDiv.style.transition = 'opacity 1s ease';
     resultDiv.style.opacity = '1';
@@ -133,7 +149,7 @@ function displayResult(score, totalQuestions, timeSpent) {
 
 function saveHistory(score, totalQuestions, timeSpent) {
     let history = JSON.parse(localStorage.getItem("quizHistory")) || [];
-    history.push({ score, totalQuestions, timeSpent, date: new Date().toLocaleString() });
+    history.push({ userName, userAvatar, score, totalQuestions, timeSpent, date: new Date().toLocaleString() });
     localStorage.setItem("quizHistory", JSON.stringify(history));
 }
 
@@ -143,13 +159,12 @@ function displayHistory() {
     historyDiv.innerHTML = "<h2>Frühere Ergebnisse:</h2>";
     history.forEach(entry => {
         const entryDiv = document.createElement("div");
-        entryDiv.textContent = `Ergebnis: ${entry.score}/${entry.totalQuestions} - Zeit: ${entry.timeSpent} Sekunden - Datum: ${entry.date}`;
+        entryDiv.textContent = `${entry.userAvatar} ${entry.userName} - Ergebnis: ${entry.score}/${entry.totalQuestions} - Zeit: ${entry.timeSpent} Sekunden - Datum: ${entry.date}`;
         entryDiv.style.marginBottom = '5px';
         historyDiv.appendChild(entryDiv);
     });
 }
 
-// Beim Laden der Seite den Timer und die Historie initialisieren
 document.addEventListener("DOMContentLoaded", () => {
     const timerDiv = document.createElement('div');
     timerDiv.id = 'timer';

@@ -115,3 +115,33 @@ button:hover {
 #result {
     color: #f4f4f4;
 }
+/* Styling für die Avatare und user Info  */
+
+.user-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.user-info label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.avatar-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.avatar-img:hover {
+    transform: scale(1.1);
+}

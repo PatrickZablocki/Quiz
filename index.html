@@ -10,6 +10,22 @@
     <div class="quiz-container">
         <h1>Frontend/Fullstack Quiz</h1>
         <button id="theme-toggle">Dark Mode</button>
+        <div id="user-info" class="user-info">
+            <h2>Wähle deinen Namen und Avatar:</h2>
+            <input type="text" id="username" placeholder="Dein Name">
+            <div class="avatar-selection">
+                <label>
+                    <input type="radio" name="avatar" value="👩" checked> 👩
+                </label>
+                <label>
+                    <input type="radio" name="avatar" value="👨"> 👨
+                </label>
+                <label>
+                    <input type="radio" name="avatar" value="🧑"> 🧑
+                </label>
+            </div>
+            <button id="start-quiz">Quiz Starten</button>
+        </div>
         <div class="quiz-box">
         <form id="quiz-form">
                 <h2>HTML & CSS</h2>
