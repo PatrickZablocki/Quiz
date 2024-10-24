@@ -1,3 +1,4 @@
+/* Allgemeine Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -30,10 +31,6 @@ h1 {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
-}
-
-.question {
-    margin-bottom: 15px;
 }
 
 label {
@@ -71,17 +68,50 @@ button:hover {
     color: #333;
 }
 
-#timer {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-}
-
 .quiz-container h2 {
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
     margin-bottom: 15px;
     color: #333;
     font-size: 20px;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #222;
+    color: #f4f4f4;
+}
+
+.dark-mode .quiz-container {
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode für die Quiz-Box */
+.dark-mode .quiz-box {
+    background-color: #444;
+    border: 1px solid #666;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode label {
+    background-color: transparent;
+}
+
+.dark-mode label:hover {
+    background-color: #555;
+}
+
+.dark-mode button {
+    background-color: #666;
+}
+
+.dark-mode button:hover {
+    background-color: #555;
+}
+.dark-mode h2{
+    color: #fff;
+}
+#result {
+    color: #f4f4f4;
 }

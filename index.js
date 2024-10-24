@@ -11,6 +11,29 @@ function updateTimer() {
         timerDiv.textContent = `Verstrichene Zeit: ${timeElapsed} Sekunden`;
     }
 }
+const toggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Prüfen, ob der Benutzer zuvor Dark Mode aktiviert hatte
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    toggleButton.textContent = 'Light Mode';
+}
+
+// Funktion zum Umschalten des Themas
+toggleButton.addEventListener('click', function() {
+    if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        toggleButton.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.classList.add('dark-mode');
+        toggleButton.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'dark');
+    }
+});
+
 
 // Quiz-Abgabe-Funktion
 function submitQuiz() {
