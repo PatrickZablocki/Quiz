@@ -104,7 +104,7 @@ function submitQuiz() {
     const timeSpent = Math.floor((new Date() - startTime) / 1000);
     displayResult(score, totalQuestions, timeSpent);
     saveHistory(score, totalQuestions, timeSpent);
-    displayHistory();
+    updateScoreboard();
 }
 
 function provideFeedback(questionName, isCorrect, correctAnswer) {
@@ -165,12 +165,29 @@ function displayHistory() {
     });
 }
 
+// Scoreboard anzeigen und aktualisieren
+function updateScoreboard() {
+    const scoreboardDiv = document.getElementById("scoreboard");
+    let history = JSON.parse(localStorage.getItem("quizHistory")) || [];
+    scoreboardDiv.innerHTML = "<h2>Scoreboard:</h2>";
+    history.slice(-10).forEach(entry => {  // Zeigt die letzten 10 Ergebnisse
+        const entryDiv = document.createElement("div");
+        entryDiv.textContent = `${entry.userAvatar} ${entry.userName} - ${entry.score}/${entry.totalQuestions} Punkte in ${entry.timeSpent} Sekunden`;
+        scoreboardDiv.appendChild(entryDiv);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const timerDiv = document.createElement('div');
     timerDiv.id = 'timer';
     timerDiv.style.fontWeight = 'bold';
     document.querySelector('.quiz-container').prepend(timerDiv);
 
+    const scoreboardDiv = document.createElement('div');
+    scoreboardDiv.id = 'scoreboard';
+    document.querySelector('.quiz-container').appendChild(scoreboardDiv);
+
     updateTimer();
     displayHistory();
+    updateScoreboard();
 });
